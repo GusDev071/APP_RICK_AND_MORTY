@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { ScrollView, Text, Pressable } from "react-native";
-import { ChevronLeftIcon } from "../components/icons";
-import Screen from "../components/screen";
+import { ChevronLeftIcon } from "../../components/icons";
+import Screen from "../../components/screen";
 
 
 export default function About() {

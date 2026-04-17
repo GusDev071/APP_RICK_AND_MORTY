@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { View, FlatList, ActivityIndicator } from "react-native";
+import { Link } from "expo-router";
+import { View, FlatList, ActivityIndicator, Pressable } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { getLatestGames } from "../lib/metacritic";
 import { AnimatedGameCard } from "./gameCards";
 import AppLogo from "./logo";
+import { InfoCircleIcon } from "./icons";
 
 export default function Main() {
   const [games, setGames] = useState([]);
@@ -20,6 +22,11 @@ export default function Main() {
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <AppLogo width={200} height={80} />
       </View>
+      <Link asChild href="/about">
+        <Pressable className="absolute top-16 right-4 p-2 rounded-full bg-gray-700">
+          <InfoCircleIcon />
+        </Pressable>
+      </Link>
       {games.length === 0 ? (
         <ActivityIndicator size="large" color="#fff" />
       ) : (

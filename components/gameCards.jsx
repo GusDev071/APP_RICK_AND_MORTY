@@ -1,9 +1,12 @@
 import { useEffect, useRef } from "react";
-import { StyleSheet, Text, View, Image, Animated } from "react-native";
+import { Text, View, Image, Animated } from "react-native";
 
 export default function GameCards({ game }) {
   return (
-    <View key={game.id} style={styles.card}>
+    <View
+      key={game.id}
+      className="flex-row bg-gray-800 rounded-xl gap-1 mb-10  ml-2 mr-2 mt-2"
+    >
       <Image
         source={{ uri: game.image }}
         style={{
@@ -12,11 +15,14 @@ export default function GameCards({ game }) {
           borderRadius: 10,
         }}
       />
-      <Text style={{ color: "#fff", fontSize: 18 }}>{game.title}</Text>
-      <Text style={{ color: "#fff", fontSize: 14 }}>{game.description}</Text>
-      <Text style={{ color: "#fff", fontSize: 12 }}>
-        {`Release date: ${new Date(game.releaseDate).toLocaleDateString()}`}
-      </Text>
+
+      <View className="justify-center">
+        <Text className="text-white text-lg mb-2 font-bold">{game.title}</Text>
+        <Text className="text-white text-base mb-2">{game.description}</Text>
+        <Text className="text-white text-sm">
+          {`Release date: ${new Date(game.releaseDate).toLocaleDateString()}`}
+        </Text>
+      </View>
     </View>
   );
 }
@@ -40,10 +46,3 @@ export function AnimatedGameCard({ game, index }) {
     </Animated.View>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    marginBottom: 30,
-    alignItems: "center",
-  },
-});

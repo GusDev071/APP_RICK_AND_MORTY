@@ -6,17 +6,17 @@ import { styled } from "nativewind";
 
 const StyledPressable = styled(Pressable);
 
-export default function GameCards({ game }) {
+export default function  CharacterCards({ character }) {
   return (
-    <Link asChild href={`/${game.id}`}>
+    <Link asChild href={`/${character.id}`}>
     <StyledPressable className="active:opacity-70 border border-white
     active:border-white/50 mb-2  rounded-xl p-4">
       <View
-        key={game.id}
+        key={character.id}
         className="flex-row bg-gray-800 rounded-xl gap-1 mb-10  ml-2 mr-2 mt-2"
       >
         <Image
-          source={{ uri: game.image }}
+          source={{ uri: character.image }}
         style={{
           width: 107,
           height: 147,
@@ -25,10 +25,10 @@ export default function GameCards({ game }) {
       />
 
       <View className="justify-center">
-        <Text className="text-white text-lg mb-2 font-bold flex-shrink">{game.title}</Text>
-        <Text className="text-white text-base mb-2">{game.description}</Text>
+        <Text className="text-white text-lg mb-2 font-bold flex-shrink">{character.name}</Text>
+        <Text className="text-white text-base mb-2">{character.species}</Text>
         <Text className="text-white text-sm">
-          {`Release date: ${new Date(game.releaseDate).toLocaleDateString()}`}
+          {`Created: ${new Date(character.releaseDate).toLocaleDateString()}`}
         </Text>
       </View>
     </View>
@@ -37,8 +37,8 @@ export default function GameCards({ game }) {
   );
 }
 
-// Este componente envuelve a GameCards y le añade una animación de aparición con un retraso basado en su índice para crear un efecto de cascada
-export function AnimatedGameCard({ game, index }) {
+// Este componente envuelve a CharacterCards y le añade una animación de aparición con un retraso basado en su índice para crear un efecto de cascada
+export function AnimatedCharacterCard({ character, index }) {
   const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -52,7 +52,9 @@ export function AnimatedGameCard({ game, index }) {
 
   return (
     <Animated.View style={{ opacity }}>
-      <GameCards game={game} />
+      <CharacterCards character={character} />
     </Animated.View>
   );
 }
+
+export const AnimatedGameCard = AnimatedCharacterCard;

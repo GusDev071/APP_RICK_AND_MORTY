@@ -13,9 +13,9 @@ export default function About() {
       </Text>
       <Text className="text-white text-base mb-2">
         Esta aplicación fue creada como parte de un curso de React Native.
-        Utiliza la API de RAWG para mostrar información sobre videojuegos,
-        incluyendo su título, descripción, fecha de lanzamiento e imagen. La
-        aplicación está diseñada para ser simple y fácil de usar, con una
+        Utiliza la API de Rick and Morty para mostrar información sobre
+        personajes, incluyendo su nombre, estado, especie, género e imagen.
+        La aplicación está diseñada para ser simple y fácil de usar, con una
         interfaz limpia y moderna.
       </Text>
       <Text className="text-white text-base mb-2">

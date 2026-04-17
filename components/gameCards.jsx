@@ -1,14 +1,22 @@
 import { useEffect, useRef } from "react";
-import { Text, View, Image, Animated } from "react-native";
+import { Text, View, Image, Animated, Pressable } from "react-native";
+import { Link } from "expo-router";
+
+import { styled } from "nativewind";
+
+const StyledPressable = styled(Pressable);
 
 export default function GameCards({ game }) {
   return (
-    <View
-      key={game.id}
-      className="flex-row bg-gray-800 rounded-xl gap-1 mb-10  ml-2 mr-2 mt-2"
-    >
-      <Image
-        source={{ uri: game.image }}
+    <Link asChild href={`/${game.id}`}>
+    <StyledPressable className="active:opacity-70 border border-white
+    active:border-white/50 mb-2  rounded-xl p-4">
+      <View
+        key={game.id}
+        className="flex-row bg-gray-800 rounded-xl gap-1 mb-10  ml-2 mr-2 mt-2"
+      >
+        <Image
+          source={{ uri: game.image }}
         style={{
           width: 107,
           height: 147,
@@ -17,13 +25,15 @@ export default function GameCards({ game }) {
       />
 
       <View className="justify-center">
-        <Text className="text-white text-lg mb-2 font-bold">{game.title}</Text>
+        <Text className="text-white text-lg mb-2 font-bold flex-shrink">{game.title}</Text>
         <Text className="text-white text-base mb-2">{game.description}</Text>
         <Text className="text-white text-sm">
           {`Release date: ${new Date(game.releaseDate).toLocaleDateString()}`}
         </Text>
       </View>
     </View>
+    </StyledPressable>
+    </Link>
   );
 }
 

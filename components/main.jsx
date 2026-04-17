@@ -6,6 +6,9 @@ import { getLatestGames } from "../lib/metacritic";
 import { AnimatedGameCard } from "./gameCards";
 import AppLogo from "./logo";
 import { InfoCircleIcon } from "./icons";
+import { styled } from "nativewind";
+
+const StyledPressable = styled(Pressable);
 
 export default function Main() {
   const [games, setGames] = useState([]);
@@ -18,15 +21,9 @@ export default function Main() {
   }, []);
 
   return (
-    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <AppLogo width={200} height={80} />
-      </View>
-      <Link asChild href="/about">
-        <Pressable className="absolute top-16 right-4 p-2 rounded-full bg-gray-700">
-          <InfoCircleIcon />
-        </Pressable>
-      </Link>
+    <View 
+    className=" bg-black"
+    >
       {games.length === 0 ? (
         <ActivityIndicator size="large" color="#fff" />
       ) : (

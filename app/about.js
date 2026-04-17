@@ -1,10 +1,13 @@
 import { Link } from "expo-router";
 import { ScrollView, Text, Pressable } from "react-native";
 import { ChevronLeftIcon } from "../components/icons";
+import Screen from "../components/screen";
+
 
 export default function About() {
   return (
-    <ScrollView className="mt-24 p-2  mb-4 ml-2 mr-2">
+    <Screen>
+    <ScrollView className="pt-24 p-2 bg-black ">
       <Text className="text-white text-lg mb-2 font-bold ">
         Acerca de esta aplicación
       </Text>
@@ -33,5 +36,6 @@ export default function About() {
         </Pressable>
       </Link>
     </ScrollView>
+    </Screen>
   );
 }
